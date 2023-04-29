@@ -9,7 +9,13 @@ def definir(mot, printable=False):
     mot = mot.capitalize()
 
     D = df.loc[df['Mot'] == mot]['Définitions']
-    D = eval(D.values[0])
+
+    if len(D) == 0:
+        print(f"'{mot}' ne figure pas dans le dictionnaire")
+        return None
+
+    else:
+        D = eval(D.values[0])
 
     if printable:
         print("Mot : ", mot)
@@ -19,5 +25,5 @@ def definir(mot, printable=False):
     else:
         return D
 
-res = definir('manga')
+res = definir('douaire')
 print(res)
