@@ -24,6 +24,3 @@ def definir(mot, printable=False):
     
     else:
         return D
-
-res = definir('douaire')
-print(res)
