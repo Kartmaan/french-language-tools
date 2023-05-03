@@ -9,7 +9,6 @@ Permet de parcouir le dictionnaire, d'y rechercher un mot et d'en récupérer sa
 
 ## Lexique français
 Outils permettant d'enregistrer des mots provenant du dictionnaire ou personnalisés, dans un fichier Excel .xlsx. L'outils permet entre autres de :
-- Ajouter des mots provenant du dictionnaire au lexique
-- Ajouter des mots personnalisés au lexique
+- Ajouter des mots au lexique
 - Rechercher si un mot est présent dans le lexique
 - Supprimer un mot du lexique
