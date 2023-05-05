@@ -11,12 +11,15 @@ Allows you to browse the dictionary, search for a word and retrieve its definiti
 
 ## Lexicon
 Tools for saving dictionary or custom words to an Excel .xlsx file. The tool allows, among other things, to:
-- Add words to the lexicon
+- Add words and its definitions from dictionary to the lexicon
+- Insert a personal word and its definitons to the lexicon
 - Find if a word is present in the lexicon
-- Delete a word from the lexicon
+- Delete a word 
+from the lexicon
 ### Screenshots
-![add_words](https://user-images.githubusercontent.com/11463619/236536676-e9b3ca52-c1d3-4c6e-9c7a-0eba7ea6678c.png)
-![excel](https://user-images.githubusercontent.com/11463619/236536718-90732b67-2922-47d6-950a-9bc8d4b1835d.png)
+![add_words](https://user-images.githubusercontent.com/11463619/236539364-6a6bf287-e2bb-41fc-ae2d-8ac15cb88c50.png)
+![insert](https://user-images.githubusercontent.com/11463619/236539392-919f4ff5-eede-4ef9-a953-1287cdf37b91.png)
+![excel](https://user-images.githubusercontent.com/11463619/236539421-4ade8b4a-1cb7-447c-9528-31342221b3d9.png)
 
 ## Word analyzer
 Tools for multi-filtering words according to specific conditions:
