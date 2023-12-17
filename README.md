@@ -29,8 +29,9 @@ Tools for multi-filtering words according to specific conditions:
 - Words that must contain such letters
 - Words that must not contain such letters
 - Words that must contain such letters at such rank
+- Words that they are anagrams to the letters present in a list
 
-The multi-filters function was written in such a way that it can work with any dataframe containing a column of words to be filtered.
+>**Note** : The multi-filters function was written in such a way that it can work with any dataframe containing a column of words to be filtered.
 
 ### Screenshot
 ![analyzer](https://user-images.githubusercontent.com/11463619/236536796-cad9ff32-8c1e-49c2-83df-949f4eec4dab.png)
