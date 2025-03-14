@@ -6,6 +6,9 @@ from typing import Optional, Union
 import pandas as pd
 from openpyxl import load_workbook, Workbook
 
+# ===================================================================
+#                          LOGGING INIT
+# ===================================================================
 logger = logging.getLogger()
 logger.setLevel(logging.WARNING)
 
@@ -13,7 +16,7 @@ logger.setLevel(logging.WARNING)
 #                         DATAFRAME CREATION
 # ===================================================================
 print("Main dataframe creation...")
-dict_df = pd.read_csv("dico.csv")
+dict_df = pd.read_csv("files/dico.csv")
 dict_df = dict_df.sort_values("Mot")
 dict_df = dict_df.dropna()
 dict_df = dict_df.reset_index(drop=True)
@@ -22,7 +25,7 @@ dict_df = dict_df.reset_index(drop=True)
 #                         EXCEL FILE INIT
 # ===================================================================
 # Opening the Excel file
-excel_file = load_workbook("lexi.xlsx")
+excel_file = load_workbook("files/lexi.xlsx")
 sheet = excel_file.active
 
 # Writing of the first line: column names
@@ -38,7 +41,7 @@ sheet["C1"] = "Timestamp"
 LIMIT_ITER = 10000
 
 def first_empty(workbook: Workbook, column: str = 'A'):
-    """ Returns the index of the first empty cell in a column.
+    """ Returns the index of the first empty cell in a column. This allows to target the cell on which to write.
 
     Args:
         workbook (Workbook): Workbook object (openpyxl) referring to the spreadsheet.
@@ -98,7 +101,6 @@ def add_word(dataframe: pd.DataFrame, workbook: Workbook, word: str) -> Optional
 
             # Cell is empty
             if not isinstance(workbook[f"A{idx}"].value, (str, int, float)):
-
                 # All the definitions of the word contained in the list (D) are merged
                 # into a single string in order to be inserted into the sheet cell
                 definition_list = []
@@ -120,7 +122,7 @@ def add_word(dataframe: pd.DataFrame, workbook: Workbook, word: str) -> Optional
                     logging.critical("Watchdog : too many iterations")
                     break
 
-    excel_file.save("lexi.xlsx")  # Save file after modification
+    excel_file.save("files/lexi.xlsx")  # Save file after modification
     logging.debug("xlsx file saved after adding a word")
     print(f"The word '{word}' has been added to the lexicon.")
 
@@ -189,7 +191,7 @@ def delete(workbook: Workbook, word: str) -> Optional[None]:
         idx = result[0]
         workbook.delete_rows(idx)
         logging.info(f"'{word}' deleted from the lexicon")
-        excel_file.save("lexi.xlsx")
+        excel_file.save("files/lexi.xlsx")
         logging.debug("xlsx file saved after deletion")
         print(f"The word '{word}' has been deleted from the lexicon.")
 
@@ -228,21 +230,21 @@ def insert(workbook: Workbook, word: str, definition: Union[str, list]) -> Optio
                 definition_txt += f"{idx + 1}) {d} "
                 workbook[f'A{row}'] = word
                 workbook[f'B{row}'] = definition_txt
-                workbook[f'C{row}'] = int(time.time())
+                workbook[f'C{row}'] = str(int(time.time()))
 
         # 'definition' is a string
         elif isinstance(definition, str):
             definition_txt = "1) " + definition
             workbook[f'A{row}'] = word
             workbook[f'B{row}'] = definition_txt
-            workbook[f'C{row}'] = int(time.time())
+            workbook[f'C{row}'] = str(int(time.time()))
 
         # Wrong type for 'definition'
         else:
             logging.critical(f"Word '{word}' not inserted : definition must be str or strs in list/tuple")
             return None
 
-        excel_file.save("lexi.xlsx")
+        excel_file.save("files/lexi.xlsx")
         logging.debug("xlsx file saved after insertion")
         print(f"The word '{word}' has been added to the lexicon.")
 
@@ -267,7 +269,7 @@ def add_random_words(dataframe: pd.DataFrame, workbook: Workbook, sample_length:
     logging.debug(f"{sample_length} words have been added in the lexicon")
     print(f"{sample_length} words were added to the lexicon.")
 
-    excel_file.save("lexi.xlsx")
+    excel_file.save("files/lexi.xlsx")
     logging.debug("xlsx file saved after adding random sample")
 
 if __name__ == "__main__":
