@@ -7,7 +7,7 @@ import pandas as pd
 #                         DATAFRAME CREATION
 # ===================================================================
 print("Main dataframe creation...")
-df = pd.read_csv("dico.csv") # Dataframe creation
+df = pd.read_csv("files/dico.csv") # Dataframe creation
 df = df.sort_values('Mot') # Alphabetic order
 df = df.dropna() # Remove missing data
 df = df.reset_index()
@@ -53,5 +53,7 @@ def define(dataframe: pd.DataFrame, word_column_name: str, definition_column_nam
 #                              MAIN
 # ===================================================================
 if __name__ == "__main__":
-    word_to_define = define(df, "Mot", "Définitions", "Hallali")
-    print(word_to_define)
+    word_to_define = "hallali"
+    word_definition = define(df, "Mot", "Définitions", word_to_define)
+    print(f"{word_to_define}:")
+    print(word_definition)
