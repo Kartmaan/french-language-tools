@@ -18,7 +18,9 @@
 Series of tools using a French dictionary in `.csv` format.
 The file contains +900,000 words with their spelling variations, their plurals, their conjugations etc. as well as their definitions, also in French. It was generated in Python on the basis of an XML file containing the database of fr.wiktionary and according to methods explained in detail in the "Upstream" folder, the XML not being in the final git due to its significant weight.
 
-The .csv dataset was also published on Kaggle : https://www.kaggle.com/datasets/kartmaan/dictionnaire-francais
+> **See also:** This project has evolved into a full desktop application.
+> Check out [Lexika-fr](https://github.com/Kartmaan/lexika-fr) -
+> an offline French dictionary with lexicon, quiz and word analyzer.
 
 ## Dictionary
 Retrieves the definition(s) of a word in the dictionary.
